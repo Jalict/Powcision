@@ -4,15 +4,32 @@ using System.Collections;
 public class CanonBall : MonoBehaviour {
     public float magnitude;
 
-	// Use this for initialization
 	void Start () 
     {
+        // Fire!
         rigidbody.AddForce(-transform.forward * magnitude * Time.deltaTime, ForceMode.VelocityChange);
 	}
 	
-	// Update is called once per frame
 	void Update () 
     {
-	    
+
 	}
+
+    void OnCollisionEnter(Collision obj)
+    {
+        Explode();
+    }
+
+    void Explode()
+    {
+        Collider[] nearbyObjects = Physics.OverlapSphere(transform.position, 3);
+
+        foreach (Collider obj in nearbyObjects)
+        {
+            if (obj.rigidbody != null)
+            {
+                obj.rigidbody.AddExplosionForce(1000, transform.position, 3);
+            }
+        }
+    }
 }
