@@ -16,7 +16,9 @@ public class CanonShoot : MonoBehaviour {
         // PC Controls
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(projectile,spawnPos.transform.position,transform.rotation);
+            Instantiate(projectile,spawnPos.transform.position,spawnPos.transform.rotation);
         }
+
+        Debug.DrawRay(spawnPos.transform.position, -spawnPos.transform.forward, Color.magenta);
 	}
 }
