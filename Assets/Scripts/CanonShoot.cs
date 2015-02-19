@@ -17,6 +17,6 @@ public class CanonShoot : MonoBehaviour {
             Instantiate(projectile, spawnPos.transform.position, spawnPos.transform.rotation);
         }
 
-        Debug.DrawRay(spawnPos.transform.position, -spawnPos.transform.forward, Color.magenta);
+        Debug.DrawRay(spawnPos.transform.position, spawnPos.transform.forward, Color.magenta);
 	}
 }

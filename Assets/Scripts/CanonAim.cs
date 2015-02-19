@@ -4,8 +4,8 @@ using System.Collections;
 public class CanonAim : MonoBehaviour {
     public float rotationSpeed;
 
-	void Start () {
-	
+	void Start () 
+    {
 	}
 	void Update () {
 

@@ -2,12 +2,16 @@
 using System.Collections;
 
 public class CanonBall : MonoBehaviour {
-    public float magnitude;
+    public float firingMagnitude;
+    public float explosionRadius;
+    public float explosionMagnitude;
+
+    public GameObject explosion;
 
 	void Start () 
     {
         // Fire!
-        rigidbody.AddForce(-transform.forward * magnitude * Time.deltaTime, ForceMode.VelocityChange);
+        rigidbody.AddForce(transform.forward * firingMagnitude * Time.deltaTime, ForceMode.VelocityChange);
 	}
 	
 	void Update () 
@@ -18,17 +22,21 @@ public class CanonBall : MonoBehaviour {
     void OnCollisionEnter(Collision obj)
     {
         Explode();
+
+        Destroy(gameObject);
     }
 
     void Explode()
     {
-        Collider[] nearbyObjects = Physics.OverlapSphere(transform.position, 3);
+        Instantiate(explosion,transform.position,Quaternion.identity);
+
+        Collider[] nearbyObjects = Physics.OverlapSphere(transform.position, explosionRadius);
 
         foreach (Collider obj in nearbyObjects)
         {
             if (obj.rigidbody != null)
             {
-                obj.rigidbody.AddExplosionForce(1000, transform.position, 3);
+                obj.rigidbody.AddExplosionForce(explosionMagnitude, transform.position, explosionRadius);
             }
         }
     }
