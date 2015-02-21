@@ -11,7 +11,9 @@ public class CanonBall : MonoBehaviour {
 	void Start () 
     {
         // Fire!
-        rigidbody.AddForce(transform.forward * firingMagnitude * Time.deltaTime, ForceMode.VelocityChange);
+        rigidbody.AddForce(transform.forward * firingMagnitude, ForceMode.VelocityChange);
+
+        GameObject.Find("CameraController").GetComponent<CameraController>().SetBall(gameObject);
 	}
 	
 	void Update () 

@@ -1195,7 +1195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2257868a05f888545a48fbb581c379d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
+  camera: {fileID: 2113475916}
 --- !u!4 &1212297533
 Transform:
   m_ObjectHideFlags: 0
@@ -1255,6 +1255,10 @@ Prefab:
       propertyPath: cameras.Array.data[1]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 11408546, guid: 1a0d7812df06a1c40ade20997ecc0f2f, type: 2}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 2113475916}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1a0d7812df06a1c40ade20997ecc0f2f, type: 2}
   m_RootGameObject: {fileID: 1212297531}
