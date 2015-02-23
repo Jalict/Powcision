@@ -6,6 +6,7 @@ public class CameraController : MonoBehaviour {
 
     public GameObject camera;
     private GameObject ball;
+    private bool zoom;
 
 	void Start () {
 	    
@@ -17,7 +18,12 @@ public class CameraController : MonoBehaviour {
         {
             Vector3 pos;
             pos = ball.transform.localPosition;
-            pos -= ball.rigidbody.velocity/4;   // Is this alright, or is there a better approach to this?
+
+            if (ball.rigidbody.velocity.y <= 0)
+            {
+                pos -= ball.rigidbody.velocity / 4;   //TODO Lerp this
+            }
+            
             camera.transform.position = pos;
 
             camera.transform.LookAt(ball.transform.position);
@@ -25,7 +31,13 @@ public class CameraController : MonoBehaviour {
         // If ball doesn't exist, go to canon position
         else
         {
-            Debug.Log("Ball died, now what?!");
+            /*
+            GameObject obj = GameObject.Find("Canon-barrel");
+            Vector3 pos = obj.transform.position;
+            pos.y += 2;
+            camera.transform.position = pos;
+            camera.transform.rotation = obj.transform.rotation;
+            */
         }
 	}
 
