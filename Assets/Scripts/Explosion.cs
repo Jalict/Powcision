@@ -4,12 +4,14 @@ using System.Collections;
 public class Explosion : MonoBehaviour {
 
 	void Start () {
+        // This might not be the best solution.
+        // It won't spend time on updating and check for shit - So is this actually better to use a corutine instead?
         StartCoroutine("Kill");
 	}
 
     IEnumerator Kill()
     {
-        yield return new WaitForSeconds(2); // Make this more flexiable for every particle (OR finder another solution)
+        yield return new WaitForSeconds(gameObject.GetComponent<ParticleSystem>().startLifetime);
 
         Destroy(gameObject);
     }
