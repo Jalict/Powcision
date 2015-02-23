@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//TODO Merge this with CanonAim.cs
+
 public class CanonShoot : MonoBehaviour {
+
     public GameObject projectile;
     public GameObject spawnPos;
 
@@ -10,7 +13,6 @@ public class CanonShoot : MonoBehaviour {
 	}
 	
 	void Update () {
-
         // PC Controls
         if (Input.GetKeyDown(KeyCode.Space))
         {

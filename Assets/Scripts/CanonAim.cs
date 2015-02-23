@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//TODO Merge this with CanonShoot.cs
+
 public class CanonAim : MonoBehaviour {
     public float rotationSpeed;
 
