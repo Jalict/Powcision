@@ -87,7 +87,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firingMagnitude: 50
   explosionRadius: 5
-  explosionMagnitude: 2000
+  explosionMagnitude: 100
   explosion: {fileID: 185502, guid: 912aec2c1b478194e8c0fe0d874666e0, type: 2}
 --- !u!135 &13587124
 SphereCollider:
