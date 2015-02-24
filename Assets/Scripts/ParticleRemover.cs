@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Explosion : MonoBehaviour {
+public class ParticleRemover : MonoBehaviour {
 
 	void Start () {
         // This might not be the best solution.
