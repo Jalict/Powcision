@@ -19,6 +19,9 @@ public class Targets : MonoBehaviour {
 
 		// If object have lost all health, then replace object with destroyed one.
 		if (health <= 0) {
+            // Play destruction sound, maybe this should be played when destructionPrefab is awake instead?
+            GetComponent<AudioSource>().Play();
+
 			Instantiate(destructionPrefab,transform.position,transform.rotation);
 
 			Destroy(gameObject);
