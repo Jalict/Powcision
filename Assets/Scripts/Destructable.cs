@@ -7,21 +7,23 @@ public class Destructable : MonoBehaviour {
      */
     private AudioSource destructionSource;
     private AudioSource hitSource;
-
+    private ParticleSystem destructionEffect;
+    private ParticleSystem hitEffect;
 
     /*
      * Public Variables
      */
-	[Header("Prop Information")]
-	public string name;
-	public int health;
+    [Header("Prop Information")]
+    public string name;
+    public int health;
 
     [Header("Sound Clips")]
     public AudioClip destructionClip;
     public AudioClip hitClip;
 
-	[Header("Pointers")]
+	[Header("DestructionFX")]
 	public GameObject destructionPrefab;
+
 
 
 	// Use this for initialization
@@ -32,24 +34,22 @@ public class Destructable : MonoBehaviour {
         destructionSource.clip = destructionClip;
         hitSource.clip = hitClip;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-
-		// If object have lost all health, then replace object with destroyed one.
-		if (health <= 0) {
-            destructionSource.Play();
-
-			Instantiate(destructionPrefab,transform.position,transform.rotation);
-
-			Destroy(gameObject);
-		}
-	}
 
     public void Damage(int damageAmount)
     {
         health -= damageAmount;
 
         hitSource.Play();
+
+        // If object have lost all health, then replace object with destroyed one.
+        if (health <= 0)
+        {
+            destructionSource.Play();
+
+            if(destructionPrefab != null)
+                Instantiate(destructionPrefab, transform.position, transform.rotation);
+
+            Destroy(gameObject);
+        }
     }
 }
