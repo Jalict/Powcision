@@ -13,9 +13,9 @@ public class CanonBall : MonoBehaviour {
         // Fire!
         rigidbody.AddForce(transform.forward * firingMagnitude, ForceMode.VelocityChange);
 
+        // TODO Create a pointer instead
         GameObject.Find("CameraController").GetComponent<CameraController>().SetBall(gameObject);
 	}
-
     void OnCollisionEnter(Collision obj)
     {
         // Play Explosion Sound (Might consider that I'll play more sounds from this source!)
@@ -28,9 +28,18 @@ public class CanonBall : MonoBehaviour {
         Destroy(gameObject);
     }
 
-    private void DamageObjectsNearby(float explosionRadius)
+    private void DamageObjectsNearby(float radius)
     {
-        //TODO Give damage to every object nearby
+        Collider[] nearbyObjects = Physics.OverlapSphere(transform.position, radius);
+
+        foreach (Collider obj in nearbyObjects)
+        {
+            Destructable hitObj = obj.GetComponent<Destructable>();
+            if (hitObj != null)
+            {
+                hitObj.Damage(100); //TODO Calculate damage
+            }
+        }
     }
 
     private void AddForceToNearby(float radius, float magnitude)
