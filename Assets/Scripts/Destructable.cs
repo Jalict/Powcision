@@ -7,8 +7,6 @@ public class Destructable : MonoBehaviour {
      */
     private AudioSource destructionSource;
     private AudioSource hitSource;
-    private ParticleSystem destructionEffect;
-    private ParticleSystem hitEffect;
 
     /*
      * Public Variables
@@ -23,8 +21,8 @@ public class Destructable : MonoBehaviour {
 
 	[Header("DestructionFX")]
 	public GameObject destructionPrefab;
-
-
+    public ParticleSystem destructionEffect;
+    public ParticleSystem hitEffect;
 
 	// Use this for initialization
 	void Start () {
@@ -40,11 +38,13 @@ public class Destructable : MonoBehaviour {
         health -= damageAmount;
 
         hitSource.Play();
+        hitEffect.Play(); // Test if this actually resets and plays
 
         // If object have lost all health, then replace object with destroyed one.
         if (health <= 0)
         {
             destructionSource.Play();
+            destructionEffect.Play();
 
             if(destructionPrefab != null)
                 Instantiate(destructionPrefab, transform.position, transform.rotation);
