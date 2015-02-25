@@ -5,7 +5,7 @@ public class ParticleRemover : MonoBehaviour {
 
 	void Start () {
         // This might not be the best solution.
-        // It won't spend time on updating and check for shit - So is this actually better to use a corutine instead?
+        // CON: This script should be added when the particle Plays. If not, it's not correctly timed.
         StartCoroutine("Kill");
 	}
 
