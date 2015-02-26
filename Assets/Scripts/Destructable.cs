@@ -40,8 +40,7 @@ public class Destructable : MonoBehaviour {
         hitSource.Play();
         hitEffect.Play(); // Test if this actually resets and plays
 
-        // If object have lost all health, then replace object with destroyed one.
-        if (health <= 0)
+        if (health <= 0)  // If object have lost all health, then replace object with destroyed one.
         {
             destructionSource.Play();
             destructionEffect.Play();

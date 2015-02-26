@@ -3,14 +3,9 @@ using System.Collections;
 using System;
 
 public class CameraController : MonoBehaviour {
-
     public GameObject camera;
-    private GameObject ball;
-    private bool zoom;
 
-	void Start () {
-	    
-	}
+    private GameObject ball;
 	
 	void Update () {
         // If the ball exist, then follow it
@@ -49,6 +44,4 @@ public class CameraController : MonoBehaviour {
     {
         this.ball = ball;
     }
-
-
 }
