@@ -22,19 +22,19 @@ public class CannonController : MonoBehaviour {
         // Movement
 		if (Input.GetKey (KeyCode.A)) 
         {
-			transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime, Space.Self);
+			transform.Rotate(Vector3.forward, -rotationSpeed * Time.deltaTime, Space.Self);
 		}
 		if (Input.GetKey (KeyCode.D)) 
         {
-            transform.Rotate(Vector3.up, -rotationSpeed * Time.deltaTime, Space.Self);
+            transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime, Space.Self);
 		}
         if (Input.GetKey(KeyCode.W))
         {            
-            barrel.Rotate(Vector3.right, rotationSpeed * Time.deltaTime);
+            barrel.Rotate(Vector3.right, -rotationSpeed * Time.deltaTime, Space.Self);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            barrel.Rotate(Vector3.right, - rotationSpeed * Time.deltaTime);
+            barrel.Rotate(Vector3.right, rotationSpeed * Time.deltaTime, Space.Self);
         }
 
         // Firing
