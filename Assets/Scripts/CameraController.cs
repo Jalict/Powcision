@@ -9,7 +9,7 @@ public class CameraController : MonoBehaviour {
         // If the ball exist, then follow it
         if (ball != null)
         {
-            Vector3 pos;
+            /*Vector3 pos;
             pos = ball.transform.localPosition;
 
             if (ball.rigidbody.velocity.y <= 0)
@@ -19,7 +19,7 @@ public class CameraController : MonoBehaviour {
             
             gameObject.transform.position = pos;
 
-            gameObject.transform.LookAt(ball.transform.position);
+            gameObject.transform.LookAt(ball.transform.position);*/
         }
         // If ball doesn't exist, go to canon position
         else
