@@ -7,6 +7,7 @@ public class Destructable : MonoBehaviour {
      */
     private AudioSource destructionSource;
     private AudioSource hitSource;
+    private ParticleSystem ps;
 
     /*
      * Public Variables
@@ -26,9 +27,9 @@ public class Destructable : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        // Sound Source & Clip
         destructionSource = gameObject.AddComponent<AudioSource>();
         hitSource = gameObject.AddComponent<AudioSource>();
-
         destructionSource.clip = destructionClip;
         hitSource.clip = hitClip;
 	}
@@ -38,12 +39,11 @@ public class Destructable : MonoBehaviour {
         health -= damageAmount;
 
         hitSource.Play();
-        hitEffect.Play(); // Test if this actually resets and plays
+        Instantiate(hitEffect,transform.position,Quaternion.identity); // Spawn at hit pos instead
 
         if (health <= 0)  // If object have lost all health, then replace object with destroyed one.
         {
             destructionSource.Play();
-            destructionEffect.Play();
 
             if(destructionPrefab != null)
                 Instantiate(destructionPrefab, transform.position, transform.rotation);
