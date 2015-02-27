@@ -19,7 +19,7 @@ public class AirdropSpawner : MonoBehaviour {
     private float timeToSpawn;
 
 	void Start () {
-        StartCoroutine("WaitForDrop");
+        StartCoroutine("WaitForDrop"); // Should another function start the coroutine insteade
 	}
 
     IEnumerator WaitForDrop()
@@ -32,7 +32,7 @@ public class AirdropSpawner : MonoBehaviour {
             float z = Random.Range(transform.position.z - (depth / 2), transform.position.z + (depth / 2));
             float y = transform.position.y + (height/2); // Look into spawning this super high - Could look better!
 
-            Instantiate(objectToSpawn, new Vector3(x, y, z), Quaternion.identity); //TODO Random rotate around y-axis
+            Instantiate(objectToSpawn, new Vector3(x, y, z), Quaternion.identity); //TODO Random rotation around y-axis
         }
     }
 

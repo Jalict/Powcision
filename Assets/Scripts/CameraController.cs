@@ -3,8 +3,6 @@ using System.Collections;
 using System;
 
 public class CameraController : MonoBehaviour {
-    public GameObject camera;
-
     private GameObject ball;
 	
 	void Update () {
@@ -19,20 +17,18 @@ public class CameraController : MonoBehaviour {
                 pos -= ball.rigidbody.velocity / 4;   //TODO Lerp this
             }
             
-            camera.transform.position = pos;
+            gameObject.transform.position = pos;
 
-            camera.transform.LookAt(ball.transform.position);
+            gameObject.transform.LookAt(ball.transform.position);
         }
         // If ball doesn't exist, go to canon position
         else
         {
-            /*
-            GameObject obj = GameObject.Find("Canon-barrel");
+            /*GameObject obj = GameObject.Find("Canon-barrel");
             Vector3 pos = obj.transform.position;
             pos.y += 2;
-            camera.transform.position = pos;
-            camera.transform.rotation = obj.transform.rotation;
-            */
+            gameObject.transform.position = pos;
+            gameObject.transform.rotation = obj.transform.rotation;*/
         }
 	}
 

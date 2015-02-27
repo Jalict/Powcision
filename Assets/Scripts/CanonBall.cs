@@ -14,8 +14,9 @@ public class CanonBall : MonoBehaviour {
         rigidbody.AddForce(transform.forward * firingMagnitude, ForceMode.VelocityChange);
 
         // TODO Create a pointer instead
-        GameObject.Find("CameraController").GetComponent<CameraController>().SetBall(gameObject);
+        GameObject.Find("Main Camera").GetComponent<CameraController>().SetBall(gameObject);
 	}
+
     void OnCollisionEnter(Collision obj)
     {
         // Play Explosion Sound (Might consider that I'll play more sounds from this source!)
@@ -55,5 +56,11 @@ public class CanonBall : MonoBehaviour {
                 obj.rigidbody.AddExplosionForce(magnitude, transform.position, radius);
             }
         }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        //TODO Draw Trajectory
+        //... Or maybe not!
     }
 }
