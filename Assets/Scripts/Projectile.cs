@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CanonBall : MonoBehaviour {
+public class Projectile : MonoBehaviour {
     public float firingMagnitude;
     public float explosionRadius;
     public float explosionMagnitude;
