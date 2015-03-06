@@ -10,7 +10,7 @@ public class Accelerometer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //TODO Look into this
+        //TODO Understand the rotation
         transform.rotation = Quaternion.LookRotation(Input.acceleration, Vector3.right);
 	}
 }

@@ -6,7 +6,7 @@ public class AirdropSpawner : MonoBehaviour {
      * Public
      */
     [Header("Spawner")]
-    public GameObject objectToSpawn; //TODO Find better name
+    public GameObject objectToSpawn; 
     public int width, height, depth;
     public bool enabled;
 
