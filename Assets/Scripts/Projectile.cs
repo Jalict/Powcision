@@ -2,19 +2,27 @@
 using System.Collections;
 
 public class Projectile : MonoBehaviour {
+    [Header("Settings")]
     public float firingMagnitude;
     public float explosionRadius;
     public float explosionMagnitude;
 
+    [Header("Effects")]
     public GameObject explosion;
+
+    // Pointer
+    private GameObject camera;
 
 	void Start () 
     {
         // Fire!
-        rigidbody.AddForce(transform.forward * firingMagnitude, ForceMode.VelocityChange);
+        GetComponent<Rigidbody>().AddForce(transform.forward * firingMagnitude, ForceMode.VelocityChange);
 
-        // TODO Create a pointer instead
-        GameObject.Find("Main Camera").GetComponent<CameraController>().SetBall(gameObject);
+        // Set current camera to be projectile
+        CameraController.SetActiveCamera("Projectile Camera");
+
+        // Get a pointer to the camera
+        camera = CameraController.GetActiveCamera();
 	}
 
     void OnCollisionEnter(Collision obj)
@@ -25,6 +33,8 @@ public class Projectile : MonoBehaviour {
         DamageObjectsNearby(explosionRadius);
         // Going to look through objects nearby twice O(n*2), bad idea or OK? 
         AddForceToNearby(explosionRadius, explosionMagnitude);
+
+        //TODO Do something with the camera so it stays a bit (Corutine?)
 
         Destroy(gameObject);
     }
@@ -51,9 +61,9 @@ public class Projectile : MonoBehaviour {
 
         foreach (Collider obj in nearbyObjects)
         {
-            if (obj.rigidbody != null)
+            if (obj.GetComponent<Rigidbody>() != null)
             {
-                obj.rigidbody.AddExplosionForce(magnitude, transform.position, radius);
+                obj.GetComponent<Rigidbody>().AddExplosionForce(magnitude, transform.position, radius);
             }
         }
     }
